@@ -14,7 +14,14 @@ int main(){
         }
     }
 
-    printf("%d", max);
-    
+    for(int i = (num1 > num2 ? num2 : num1); i <= num1*num2; i++){
+        if(i % num1 == 0 && i % num2 == 0){
+            min = i;
+            break;
+        }
+    }
+
+    printf("%d\n%d", max, min);
+
     return 0;
 }
