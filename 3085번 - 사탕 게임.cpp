@@ -20,6 +20,8 @@ int main(){
         }
     }
 
+    max = candy(board, N);
+
     for(int i = 0; i < N; i++){
         for(int j = 0; j < N; j++){
             if(j + 1 < N && board[i][j] != board[i][j+1]){
@@ -48,19 +50,10 @@ int candy(char board[][50], int N){
     int max = 1;
     int result = 1;
 
-    // for(int i = 0; i < N; i++){
-    //     for(int j = 0; j < N; j++){
-    //         cout << board[i][j];
-    //     }
-    //     cout << "\n";
-    // }
-
     for(int i = 0; i < N; i++){     
         for(int j = 1; j < N; j++){     // °¡·Î
             if(board[i][j-1] == board[i][j]){
                 result++;
-                // printf("[%d, %d]\n", i, j);
-                // printf("max = %d\n", result);
             }
             else
                 break;
