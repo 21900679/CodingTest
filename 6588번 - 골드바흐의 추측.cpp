@@ -20,7 +20,7 @@ int main(){
     }
 
     for(int i = 0; i < end; i++){
-        for(int j = 3; j < input[i]/2; j += 2){
+        for(int j = 3; j < input[i]; j += 2){
             b = input[i] - j;
             if(b % 2 == 1 && tf(b) && tf(j)){
                 output[i] = j;
