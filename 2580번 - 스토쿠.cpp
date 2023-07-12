@@ -32,8 +32,8 @@ int backtracking(int k){
         if(check[i] == 0){
             input[x][y] = i + 1;
             result = backtracking(k+1);
-            if(result == 1) break;
-            input[x][y] = 0;
+            if(result == 1) break;      // 스토쿠가 정상적으로 되었을 경우
+            input[x][y] = 0;            // 스토쿠의 값이 잘못들어갔을 경우
         }
     }
     return result;
