@@ -7,9 +7,9 @@ using namespace std;
 int input[MAX][MAX];
 int blank[MAX*MAX][2];
 int n = 0;
-bool check[9] = {true};
 
 int backtracking(int k){
+    int check[9] = {0};     // true 0, false 1
     int x = blank[k][0];
     int y = blank[k][1];
     int result = 0;
@@ -18,24 +18,19 @@ int backtracking(int k){
         return 1;
 
     for(int i = 0; i < MAX; i++){
-        if(input[x][i] != 0)
-            check[input[x][i]-1] = false;       // 가로
-        if(input[i][y] != 0)
-            check[input[i][y]-1] = false;       // 세로
+            check[input[x][i]-1] = 1;       // 가로
+            check[input[i][y]-1] = 1;       // 세로
     }
 
     for(int i = x - x % 3; i < x - x % 3 + 3; i++){     // 사각형
         for(int j = y - y % 3; j < y - y % 3 + 3; j++){
-            if(input[i][j] != 0)
-                check[input[i][j]-1] = false;
+                check[input[i][j]-1] = 1;
         }
     }
 
     for(int i = 0; i < MAX; i++){
-        if(check[i]){
+        if(check[i] == 0){
             input[x][y] = i + 1;
-            // for(int i = 0; i < MAX; i++)
-            //     check[i] = true; 
             result = backtracking(k+1);
             if(result == 1) break;
             input[x][y] = 0;
