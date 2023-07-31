@@ -18,30 +18,22 @@ int main(){
     for(int i = 0; i < M; i++){
         cin >> abc >> num;
         if(abc.compare("add") == 0){
-            if(check[num-1] == false)
-                check[num-1] = true;
+            check[num-1] = true;
         }
         else if(abc.compare("remove") == 0){
-            if(check[num-1])
-                check[num-1] = false;
+            check[num-1] = false;
         }
         else if(abc.compare("empty") == 0){
             fill_n(check, 20, false);
         }
         else if(abc.compare("toggle") == 0){
-            if(check[num-1])
-                check[num-1] = false;
-            else
-                check[num-1] = true;
+            check[num-1] = !check[num-1];
         }
         else if(abc.compare("all") == 0){
             fill_n(check, 20, true);
         }
         else if(abc.compare("check") == 0){
-            if(check[num-1])
-                output.push_back(1);
-            else   
-                output.push_back(0);
+                output.push_back(check[num-1]);
         }        
     }
 
