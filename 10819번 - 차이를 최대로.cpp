@@ -5,21 +5,22 @@ using namespace std;
 
 int N;
 int input[8];
+int num[8] = {0,1,2,3,4,5,6,7};
 int result = 0;
 
 int nextValue(){
     int count = N-1;
-    while(count >= 1 && input[count] <= input[count-1])
+    while(count >= 1 && num[count] <= num[count-1])
         count--;
     if(count == 0){
         return 0;
     }
     else{
         int index = count;
-        while(index <= N-1 && input[count-1] <= input[index])
+        while(index <= N-1 && num[count-1] <= num[index])
             index++;
-        swap(input[count-1], input[index-1]);
-        sort(input + count, input + N);
+        swap(num[count-1], num[index-1]);
+        sort(num + count, num + N);
         return 1;
     }
 }
@@ -27,7 +28,7 @@ int nextValue(){
 void maxValue(){
     int calculate = 0;
     for(int i = 0; i < N - 1; i++){
-        calculate += abs(input[i]-input[i+1]);
+        calculate += abs(input[num[i]]-input[num[i+1]]);
     }
     if(result < calculate)
         result = calculate;
@@ -39,14 +40,14 @@ int main(){
 
     for(int i = 0; i < N; i++)
         cin >> input[i];
-    sort(input, input+N);
 
     maxValue();
     
-    while(nextValue() == 1)
+    while(nextValue() == 1){
         maxValue();
+    }
 
-    cout << result;
+    cout << result << endl;
 
     return 0;
 }
